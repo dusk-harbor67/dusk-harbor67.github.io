@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>瓜子漫画-瓜子漫画在线阅读_瓜子漫画热门漫画推荐</title>
+<meta name="description" content="瓜子漫画是面向漫画爱好者的在线阅读站点，汇集热门连载、完结佳作与题材分类，提供瓜子漫画在线阅读入口、新作更新与热门漫画推荐，方便读者快速找到想看的作品。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f7c948'/%3E%3Cpath d='M20 18h24a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4V22a4 4 0 0 1 4-4z' fill='%23fff8e6'/%3E%3Cpath d='M24 26h16M24 33h12M24 40h16' stroke='%232b2b2b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#232323;
+  --ink-soft:#5a5a5a;
+  --paper:#fdf8ee;
+  --paper-2:#fffdf7;
+  --line:#eadfc8;
+  --brand:#f7c948;
+  --brand-deep:#e8a91c;
+  --accent:#3f7d5c;
+  --accent-soft:#e6f1e9;
+  --red:#d1583f;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;max-width:100%;}
+.wrap{width:min(1120px,92vw);margin:0 auto;}
+
+/* 页头 */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(253,248,238,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{
+  display:flex;align-items:center;gap:18px;
+  padding:14px 0;flex-wrap:wrap;
+}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.logo-mark{
+  width:38px;height:38px;border-radius:11px;
+  background:linear-gradient(140deg,var(--brand),var(--brand-deep));
+  display:grid;place-items:center;
+  box-shadow:0 4px 12px rgba(232,169,28,.35);
+}
+.logo-mark svg{width:22px;height:22px;}
+.logo-text{font-size:20px;font-weight:800;letter-spacing:.5px;}
+nav.main{margin-left:auto;}
+nav.main ul{display:flex;gap:6px;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
+nav.main a{
+  display:block;padding:7px 13px;border-radius:9px;
+  font-size:14.5px;color:var(--ink-soft);font-weight:500;
+  transition:.2s;
+}
+nav.main a:hover{background:var(--brand);color:#2b2b2b;}
+
+/* 首屏 */
+.hero{padding:46px 0 40px;position:relative;overflow:hidden;}
+.hero::before{
+  content:"";position:absolute;right:-120px;top:-90px;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#fbe9b6,rgba(251,233,182,0));
+  z-index:0;
+}
+.hero-grid{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--accent-soft);color:var(--accent);
+  padding:5px 13px;border-radius:999px;
+  font-size:13px;font-weight:600;margin-bottom:18px;
+}
+.eyebrow span.dot{width:7px;height:7px;border-radius:50%;background:var(--accent);}
+h1{
+  font-size:clamp(30px,4.6vw,46px);
+  line-height:1.2;margin:0 0 16px;
+  font-weight:900;letter-spacing:.5px;
+}
+h1 em{font-style:normal;color:var(--accent);}
+.hero p.lead{
+  margin:0 0 26px;font-size:16px;color:var(--ink-soft);
+  max-width:36em;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:12px;
+  font-weight:700;font-size:15px;transition:.2s;
+  border:1px solid transparent;
+}
+.btn-primary{
+  background:var(--ink);color:#fff8e6;
+  box-shadow:0 6px 16px rgba(35,35,35,.22);
+}
+.btn-primary:hover{background:#000;transform:translateY(-1px);}
+.btn-ghost{
+  background:transparent;border-color:var(--line);color:var(--ink);
+}
+.btn-ghost:hover{border-color:var(--brand-deep);background:#fff;}
+.hero-stats{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap;}
+.hero-stats div strong{
+  display:block;font-size:22px;font-weight:900;color:var(--accent);
+}
+.hero-stats div span{font-size:13px;color:var(--ink-soft);}
+
+/* 首屏插画卡 */
+.hero-art{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:18px;
+  box-shadow:0 18px 40px -22px rgba(35,35,35,.28);
+}
+.hero-art .art-head{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;color:var(--ink-soft);margin-bottom:10px;
+}
+.hero-art .art-head b{color:var(--ink);font-size:13.5px;}
+.art-badge{background:var(--brand);color:#2b2b2b;padding:2px 9px;border-radius:6px;font-weight:700;font-size:11.5px;}
+
+/* 通用区块 */
+section{padding:52px 0;}
+.sec-head{margin-bottom:30px;}
+.sec-head h2{
+  font-size:clamp(22px,2.8vw,28px);margin:0 0 8px;font-weight:800;
+  letter-spacing:.3px;
+}
+.sec-head p{margin:0;color:var(--ink-soft);font-size:14.5px;max-width:46em;}
+.sec-head .rule{
+  display:inline-block;width:34px;height:4px;border-radius:2px;
+  background:var(--brand);margin-bottom:12px;
+}
+
+/* 热门推荐卡片 */
+.cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+}
+.card{
+  background:var(--paper-2);
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  transition:.25s;
+  display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -20px rgba(35,35,35,.3);}
+.card-cover{
+  aspect-ratio:4/3;
+  display:grid;place-items:center;
+  position:relative;
+}
+.card-cover svg{width:70%;height:70%;}
+.cover-a{background:linear-gradient(140deg,#fde9b4,#f9d87f);}
+.cover-b{background:linear-gradient(140deg,#d9ebdf,#b9dcc6);}
+.cover-c{background:linear-gradient(140deg,#f8dcd2,#f0b9a5);}
+.card-tag{
+  position:absolute;left:12px;top:12px;
+  background:rgba(255,255,255,.9);color:var(--ink);
+  font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:6px;
+}
+.card-body{padding:16px 18px 20px;flex:1;display:flex;flex-direction:column;}
+.card-body h3{margin:0 0 7px;font-size:16.5px;font-weight:800;}
+.card-body p{margin:0 0 14px;font-size:13.5px;color:var(--ink-soft);flex:1;}
+.card-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12.5px;color:var(--ink-soft);
+  border-top:1px dashed var(--line);padding-top:12px;
+}
+.card-meta a{color:var(--accent);font-weight:700;}
+.card-meta a:hover{text-decoration:underline;}
+
+/* 分类导航 */
+.genres{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;
+}
+.genre{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+  padding:16px 16px 14px;transition:.2s;
+}
+.genre:hover{border-color:var(--brand-deep);background:#fffdf4;}
+.genre b{display:block;font-size:15px;margin-bottom:3px;}
+.genre span{font-size:12.5px;color:var(--ink-soft);}
+
+/* 更新列表 */
+.update-panel{
+  background:var(--paper-2);border:1px solid var(--line);border-radius:20px;
+  padding:8px 22px;
+}
+.update-row{
+  display:grid;grid-template-columns:1fr auto auto;gap:16px;
+  align-items:center;padding:15px 0;border-bottom:1px solid var(--line);
+  font-size:14.5px;
+}
+.update-row:last-child{border-bottom:none;}
+.update-row .title{font-weight:700;}
+.update-row .title small{display:block;font-weight:400;color:var(--ink-soft);font-size:12.5px;margin-top:2px;}
+.chap{color:var(--accent);font-weight:700;font-size:13px;white-space:nowrap;}
+.date{color:var(--ink-soft);font-size:12.5px;white-space:nowrap;}
+
+/* 搜索筛选 */
+.toolbar{
+  display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+  background:var(--paper-2);border:1px solid var(--line);
+  border-radius:16px;padding:14px 16px;margin-bottom:22px;
+}
+.toolbar label{font-size:14px;font-weight:700;color:var(--ink-soft);}
+.toolbar input[type="search"]{
+  flex:1;min-width:200px;
+  padding:10px 14px;border:1px solid var(--line);border-radius:10px;
+  font-size:14.5px;font-family:inherit;background:#fff;color:var(--ink);
+}
+.toolbar input[type="search"]:focus{outline:2px solid var(--brand);outline-offset:1px;}
+.chip-group{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{
+  border:1px solid var(--line);background:#fff;color:var(--ink-soft);
+  padding:7px 15px;border-radius:999px;font-size:13.5px;cursor:pointer;
+  font-family:inherit;transition:.18s;
+}
+.chip:hover{border-color:var(--brand-deep);}
+.chip.active{background:var(--ink);color:#fff8e6;border-color:var(--ink);}
+.list-note{font-size:13px;color:var(--ink-soft);margin:0 0 14px;}
+.empty-tip{
+  display:none;padding:26px;text-align:center;color:var(--ink-soft);
+  background:var(--paper-2);border:1px dashed var(--line);border-radius:14px;font-size:14px;
+}
+
+/* 编辑说法 */
+.editorial{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start;
+}
+.editorial .prose p{font-size:15px;color:#3d3d3d;margin:0 0 16px;}
+.editorial .prose p:last-child{margin-bottom:0;}
+.note-box{
+  background:var(--accent-soft);border-radius:18px;padding:22px 24px;
+  border:1px solid #cfe4d6;
+}
+.note-box h3{margin:0 0 10px;font-size:16px;color:var(--accent);}
+.note-box ul{margin:0;padding-left:18px;font-size:14px;color:#3a5548;}
+.note-box li{margin-bottom:8px;}
+.note-box li:last-child{margin-bottom:0;}
+
+/* 下载条 */
+.download-bar{
+  background:linear-gradient(120deg,#fff6dc,#fdf8ee);
+  border:1px solid var(--line);border-radius:20px;
+  padding:26px 28px;
+  display:flex;gap:22px;align-items:center;flex-wrap:wrap;
+}
+.download-bar .dl-text{flex:1;min-width:240px;}
+.download-bar h3{margin:0 0 6px;font-size:18px;}
+.download-bar p{margin:0;font-size:13.5px;color:var(--ink-soft);}
+.dl-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--brand);color:#2b2b2b;font-weight:800;
+  padding:12px 26px;border-radius:12px;font-size:15px;
+  pointer-events:none;opacity:.9;
+}
+
+/* 页尾 */
+footer.site{
+  border-top:1px solid var(--line);
+  background:var(--paper-2);
+  padding:38px 0 30px;margin-top:20px;
+}
+.foot-grid{
+  display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;
+  align-items:flex-start;
+}
+.foot-brand .logo{margin-bottom:10px;}
+.foot-brand p{margin:0;font-size:13.5px;color:var(--ink-soft);max-width:32em;}
+.foot-links{display:flex;gap:34px;flex-wrap:wrap;}
+.foot-links div b{display:block;font-size:13.5px;margin-bottom:9px;}
+.foot-links ul{list-style:none;margin:0;padding:0;font-size:13px;}
+.foot-links li{margin-bottom:7px;}
+.foot-links a{color:var(--ink-soft);}
+.foot-links a:hover{color:var(--accent);}
+.foot-bottom{
+  margin-top:26px;padding-top:18px;border-top:1px solid var(--line);
+  font-size:12.5px;color:var(--ink-soft);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .hero-art{order:2;}
+  .cards{grid-template-columns:repeat(2,1fr);}
+  .editorial{grid-template-columns:1fr;}
+}
+@media (max-width:640px){
+  .head-inner{padding:12px 0;gap:10px;}
+  nav.main{width:100%;margin-left:0;overflow-x:auto;}
+  nav.main ul{flex-wrap:nowrap;}
+  nav.main a{white-space:nowrap;font-size:13.5px;padding:6px 11px;}
+  .hero{padding:30px 0 26px;}
+  h1{font-size:28px;}
+  .hero p.lead{font-size:14.5px;}
+  .hero-stats{gap:18px;}
+  .hero-stats div strong{font-size:19px;}
+  section{padding:38px 0;}
+  .cards{grid-template-columns:1fr;gap:16px;}
+  .update-row{grid-template-columns:1fr auto;gap:8px 12px;}
+  .update-row .date{grid-column:2;text-align:right;}
+  .download-bar{padding:20px;flex-direction:column;align-items:flex-start;}
+  .toolbar{padding:12px;}
+  .foot-links{gap:22px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="瓜子漫画首页">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="#fff8e6"/>
+          <path d="M8 9h8M8 12.5h5.5M8 16h8" stroke="#2b2b2b" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="logo-text">瓜子漫画</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <ul>
+        <li><a href="#hot">热门推荐</a></li>
+        <li><a href="#genres">题材分类</a></li>
+        <li><a href="#updates">更新速览</a></li>
+        <li><a href="#browse">书架检索</a></li>
+        <li><a href="#about">阅读说明</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>在线漫画阅读入口</span>
+        <h1>瓜子漫画</h1>
+        <p class="lead">瓜子漫画把连载新作、完结佳作和题材分类放在同一处，打开页面就能按更新、题材或书名找到想读的作品，省去来回翻找的麻烦。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#hot">
+            浏览热门作品
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#genres">按题材查找</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>9</strong><span>题材分类</span></div>
+          <div><strong>每日</strong><span>更新速览</span></div>
+          <div><strong>3 步</strong><span>找到想看的书</span></div>
+        </div>
+      </div>
+
+      <aside class="hero-art" aria-label="瓜子漫画阅读界面示意">
+        <div class="art-head">
+          <b>今日在读</b>
+          <span class="art-badge">连载中</span>
+        </div>
+        <svg viewBox="0 0 340 240" role="img" aria-label="漫画翻页插画">
+          <rect x="10" y="12" width="320" height="216" rx="16" fill="#fdf4dd"/>
+          <rect x="30" y="38" width="130" height="150" rx="10" fill="#ffffff" stroke="#eadfc8"/>
+          <rect x="180" y="38" width="130" height="150" rx="10" fill="#ffffff" stroke="#eadfc8"/>
+          <circle cx="80" cy="86" r="20" fill="#f7c948"/>
+          <path d="M52 150c12-26 28-32 44-16 8 8 18 9 30 2" stroke="#3f7d5c" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <rect x="48" y="166" width="94" height="7" rx="3.5" fill="#eadfc8"/>
+          <circle cx="230" cy="80" r="16" fill="#d1583f" opacity=".8"/>
+          <path d="M198 132l26 20-26 20" stroke="#e8a91c" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="198" y="166" width="94" height="7" rx="3.5" fill="#eadfc8"/>
+          <path d="M170 26v180" stroke="#eadfc8" stroke-width="3" stroke-dasharray="6 8"/>
+        </svg>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 热门推荐 -->
+  <section id="hot">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="rule"></span>
+        <h2>热门漫画推荐</h2>
+        <p>按近期阅读热度与更新频率挑出三本代表作品，涵盖都市、奇幻与日常三类常见题材，适合作为进入瓜子漫画的第一站。</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-cover cover-a">
+            <span class="card-tag">都市 · 连载</span>
+            <svg viewBox="0 0 120 100" aria-hidden="true">
+              <rect x="14" y="20" width="92" height="66" rx="9" fill="#fffdf7" stroke="#e8c46a"/>
+              <circle cx="46" cy="50" r="15" fill="#f7c948"/>
+              <path d="M66 44h28M66 54h20M66 64h26" stroke="#d6b15a" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>合租日常志</h3>
+            <p>以城市合租生活为背景的短篇连载，每章围绕一件小事展开，节奏轻快，适合碎片时间阅读。</p>
+            <div class="card-meta"><span>更新稳定</span><a href="#browse">查看同类</a></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-cover cover-b">
+            <span class="card-tag">奇幻 · 连载</span>
+            <svg viewBox="0 0 120 100" aria-hidden="true">
+              <rect x="14" y="20" width="92" height="66" rx="9" fill="#fffdf7" stroke="#a9cdb6"/>
+              <path d="M60 34l10 20h-20z" fill="#3f7d5c"/>
+              <circle cx="60" cy="66" r="11" fill="#b9dcc6"/>
+              <path d="M32 72h16M74 72h16" stroke="#8fb9a0" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>雾岭记</h3>
+            <p>架空山岭世界里的冒险故事，画面重视场景铺陈，章节之间线索连贯，适合连续追读。</p>
+            <div class="card-meta"><span>剧情向</span><a href="#browse">查看同类</a></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-cover cover-c">
+            <span class="card-tag">日常 · 完结</span>
+            <svg viewBox="0 0 120 100" aria-hidden="true">
+              <rect x="14" y="20" width="92" height="66" rx="9" fill="#fffdf7" stroke="#e8b6a3"/>
+              <path d="M34 62c8-16 18-18 26-6 8 12 18 10 26-2" stroke="#d1583f" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <circle cx="46" cy="42" r="7" fill="#f0b9a5"/>
+              <circle cx="74" cy="42" r="7" fill="#f0b9a5"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <h3>晚风信箱</h3>
+            <p>已完结的温情短篇集，全书结构完整，适合一次读完，也适合作为瓜子漫画的入门选择。</p>
+            <div class="card-meta"><span>已完结</span><a href="#browse">查看同类</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 题材分类 -->
+  <section id="genres">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="rule"></span>
+        <h2>题材分类导航</h2>
+        <p>瓜子漫画按读者常见的口味划分阅读入口，点选任一题材即可跳过首页推荐，直接进入对应书单范围。</p>
+      </div>
+      <div class="genres">
+        <a class="genre" href="#browse"><b>都市生活</b><span>合租、职场、邻里日常</span></a>
+        <a class="genre" href="#browse"><b>奇幻冒险</b><span>架空世界与远行故事</span></a>
+        <a class="genre" href="#browse"><b>校园青春</b><span>社团、课堂、成长片段</span></a>
+        <a class="genre" href="#browse"><b>推理悬疑</b><span>线索铺陈与反转节奏</span></a>
+        <a class="genre" href="#browse"><b>治愈日常</b><span>短篇合集与舒缓叙事</span></a>
+        <a class="genre" href="#browse"><b>热血战斗</b><span>篇章式推进的对决</span></a>
+        <a class="genre" href="#browse"><b>科幻未来</b><span>近未来设定与想象</span></a>
+        <a class="genre" href="#browse"><b>古风传奇</b><span>东方背景与人物群像</span></a>
+        <a class="genre" href="#browse"><b>运动竞技</b><span>训练、对决与团队协作</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 更新速览 -->
+  <section id="updates">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="rule"></span>
+        <h2>更新速览</h2>
+        <p>这里按时间先后列出近期有章节变动的作品，连载与完结状态分别标注，方便读者判断是否值得从头追起。</p>
+      </div>
+      <div class="update-panel">
+        <div class="update-row">
+          <div class="title">合租日常志<small>都市 · 连载中</small></div>
+          <span class="chap">更新至 第 42 话</span>
+          <span class="date">近期更新</span>
+        </div>
+        <div class="update-row">
+          <div class="title">雾岭记<small>奇幻 · 连载中</small></div>
+          <span class="chap">更新至 第 68 话</span>
+          <span class="date">近期更新</span>
+        </div>
+        <div class="update-row">
+          <div class="title">晚风信箱<small>日常 · 已完结</small></div>
+          <span class="chap">全 36 话</span>
+          <span class="date">完结可读</span>
+        </div>
+        <div class="update-row">
+          <div class="title">长巷灯火<small>都市 · 连载中</small></div>
+          <span class="chap">更新至 第 21 话</span>
+          <span class="date">近期更新</span>
+        </div>
+        <div class="update-row">
+          <div class="title">北岸棋局<small>推理 · 连载中</small></div>
+          <span class="chap">更新至 第 15 话</span>
+          <span class="date">近期更新</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 书架检索 -->
+  <section id="browse">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="rule"></span>
+        <h2>书架检索</h2>
+        <p>输入书名关键词，或点选下方题材标签，下方列表会即时筛选。所有条目都直接显示在页面中，无需跳转。</p>
+      </div>
+
+      <div class="toolbar">
+        <label for="searchInput">搜书名</label>
+        <input id="searchInput" type="search" placeholder="例如：雾岭、信箱、合租" autocomplete="off">
+        <div class="chip-group" role="group" aria-label="题材筛选">
+          <button class="chip active" data-genre="all">全部</button>
+          <button class="chip" data-genre="都市">都市</button>
+          <button class="chip" data-genre="奇幻">奇幻</button>
+          <button class="chip" data-genre="日常">日常</button>
+          <button class="chip" data-genre="推理">推理</button>
+        </div>
+      </div>
+      <p class="list-note" id="listCount" aria-live="polite">当前显示 5 部作品</p>
+
+      <div class="update-panel" id="bookList">
+        <div class="update-row" data-genre="都市" data-title="合租日常志">
+          <div class="title">合租日常志<small>都市 · 连载中 · 适合碎片阅读</small></div>
+          <span class="chap">第 42 话</span>
+          <span class="date">都市</span>
+        </div>
+        <div class="update-row" data-genre="奇幻" data-title="雾岭记">
+          <div class="title">雾岭记<small>奇幻 · 连载中 · 剧情向</small></div>
+          <span class="chap">第 68 话</span>
+          <span class="date">奇幻</span>
+        </div>
+        <div class="update-row" data-genre="日常" data-title="晚风信箱">
+          <div class="title">晚风信箱<small>日常 · 已完结 · 短篇集</small></div>
+          <span class="chap">全 36 话</span>
+          <span class="date">日常</span>
+        </div>
+        <div class="update-row" data-genre="都市" data-title="长巷灯火">
+          <div class="title">长巷灯火<small>都市 · 连载中 · 群像叙事</small></div>
+          <span class="chap">第 21 话</span>
+          <span class="date">都市</span>
+        </div>
+        <div class="update-row" data-genre="推理" data-title="北岸棋局">
+          <div class="title">北岸棋局<small>推理 · 连载中 · 线索密集</small></div>
+          <span class="chap">第 15 话</span>
+          <span class="date">推理</span>
+        </div>
+      </div>
+      <div class="empty-tip" id="emptyTip">没有找到匹配的作品，换个关键词或切换题材标签试试。</div>
+    </div>
+  </section>
+
+  <!-- 阅读说明 -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="rule"></span>
+        <h2>在瓜子漫画怎么读</h2>
+        <p>给第一次来到瓜子漫画的读者一份简单的阅读路径说明，从选书到追更，三步即可完成。</p>
+      </div>
+      <div class="editorial">
+        <div class="prose">
+          <p>第一步是确定口味。首页的热门推荐覆盖了最常见的三类题材，如果已经清楚自己想看什么，直接使用题材分类导航会更快，九个入口各自对应一类作品范围。</p>
+          <p>第二步是确认进度。连载作品会在更新速览中显示当前话数，完结作品标注总话数与完结状态。追连载前先看一眼话数，可以避免读到大半才发现故事尚未收尾。</p>
+          <p>第三步是持续追更。瓜子漫画把书名、题材与更新状态并排放在同一行，读者不必反复点击进入详情页就能判断是否需要继续关注。对于已经完结的作品，可以一次性读完整个故事，阅读节奏由自己掌握。</p>
+          <p>需要说明的是，页面中的作品信息以当前展示为准，具体章节数量与更新状态会随作品推进而变化，阅读时请以列表中显示的最新内容为准。</p>
+        </div>
+        <aside class="note-box">
+          <h3>阅读小提示</h3>
+          <ul>
+            <li>短篇合集适合一次读完，不必担心断更。</li>
+            <li>剧情向长篇建议从第一话开始，线索前后关联。</li>
+            <li>用书名关键词筛选，比逐页翻找更快。</li>
+            <li>题材标签可随时切换，筛选结果即时刷新。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载条 -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="download-bar">
+        <div class="dl-text">
+          <h3>瓜子漫画离线阅读包</h3>
+          <p>把常用书单整理成离线阅读包，网络不稳定时也能继续翻页。下载入口开放后将在此处提供。</p>
+        </div>
+        <a class="dl-btn" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v10m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          下载
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="#fff8e6"/>
+              <path d="M8 9h8M8 12.5h5.5M8 16h8" stroke="#2b2b2b" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">瓜子漫画</span>
+        </a>
+        <p>瓜子漫画是一个以在线阅读为主的漫画站点首页，围绕热门连载、题材分类与更新速览组织内容，帮助读者更快找到下一部想看的作品。</p>
+      </div>
+      <div class="foot-links">
+        <div>
+          <b>阅读入口</b>
+          <ul>
+            <li><a href="#hot">热门推荐</a></li>
+            <li><a href="#genres">题材分类</a></li>
+            <li><a href="#updates">更新速览</a></li>
+          </ul>
+        </div>
+        <div>
+          <b>使用帮助</b>
+          <ul>
+            <li><a href="#browse">书架检索</a></li>
+            <li><a href="#about">阅读说明</a></li>
+            <li><a href="#top">回到顶部</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>瓜子漫画 · 在线阅读主题首页</span>
+      <span>作品信息以页面当前展示为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('searchInput');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var rows = Array.prototype.slice.call(document.querySelectorAll('#bookList .update-row'));
+  var countEl = document.getElementById('listCount');
+  var emptyTip = document.getElementById('emptyTip');
+  var bookList = document.getElementById('bookList');
+  var currentGenre = 'all';
+
+  function apply(){
+    var kw = (input.value || '').trim().toLowerCase();
+    var shown = 0;
+    rows.forEach(function(row){
+      var genreOk = currentGenre === 'all' || row.getAttribute('data-genre') === currentGenre;
+      var titleOk = kw === '' || row.getAttribute('data-title').toLowerCase().indexOf(kw) !== -1;
+      var visible = genreOk && titleOk;
+      row.style.display = visible ? '' : 'none';
+      if(visible) shown++;
+    });
+    countEl.textContent = '当前显示 ' + shown + ' 部作品';
+    emptyTip.style.display = shown === 0 ? 'block' : 'none';
+    bookList.style.display = shown === 0 ? 'none' : '';
+  }
+
+  input.addEventListener('input', apply);
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+      currentGenre = chip.getAttribute('data-genre');
+      apply();
+    });
+  });
+  apply();
+})();
+</script>
+</body>
+            </html>
